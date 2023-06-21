@@ -28,6 +28,10 @@
     .label{
         @apply block mb-2 text-base capitalize text-gray-400
     }
+
+    .form-input{
+        @apply w-full border px-3 py-2.5 border-gray-300 rounded-md outline-none
+    }
     
     .input-file{
         @apply block file:py-2.5 file:px-4 file:rounded file:cursor-pointer file:bg-indigo-600 file:text-white file:border-none file:text-sm file:font-medium file:mr-4
@@ -50,8 +54,50 @@
         @apply bg-green-100 text-green-900 p-3 mb-3 rounded-sm border-l-4 border-green-600 text-sm w-fit font-medium       
     }
 
+    .error
+    {
+        @apply block mt-1.5 text-rose-600 font-medium text-sm
+    }
     .pagination-link {
         @apply border border-gray-800 text-gray-500 text-sm font-medium block py-2 px-4 bg-gray-900 
+    }
+
+    .nav{
+        @apply bg-white w-full h-20 flex items-center shadow-sm
+    }
+
+    .nav-li{
+        @apply mx-4 cursor-pointer
+    }
+
+    .nav-link{
+        @apply text-lg font-semibold text-black-1000 capitalize 
+    }
+
+    .nav-circle{
+        @apply flex items-center justify-center w-6 h-6 rounded-full bg-blue-600 text-xs text-white font-medium absolute -top-2 -right-3
+    }
+
+    .header{
+        @apply -z-10 w-full h-96 bg-[url('./assets/images/header3.jpg')] bg-no-repeat bg-cover relative 
+    }
+    
+    .header-cover{
+        @apply absolute inset-0 w-full h-full bg-black-1000/40 
+    }
+
+    .header-heading{
+        @apply text-white text-2xl capitalize font-medium
+    }
+    
+    .flex-y{
+        @apply flex items-center
+    }
+    .my-container{
+        @apply max-w-screen-xl w-full mx-auto px-6
+    }
+    .heading{
+        @apply text-xl capitalize font-semibold 
     }
 }
 .font-brandTitle

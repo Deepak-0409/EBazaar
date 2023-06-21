@@ -8,12 +8,20 @@ import Products from "../screens/dashboard/Products";
 import Private from "./Private";
 import Public from "./Public";
 import EditProduct from "../screens/dashboard/EditProduct";
+import Home from "../screens/home/Home";
+import Login from "../screens/home/auth/Login";
+import Register from "../screens/home/auth/Register";
+import Dashboard from "../screens/user/Dashboard";
 
 const Routing = () =>{
     
     return (
         <BrowserRouter>
             <Routes>
+                <Route path ="/" element ={<Home/>} />
+                <Route path ="login" element ={<Login/>} />
+                <Route path ="register" element ={<Register/>} />
+                <Route path ="user" element ={<Dashboard/>} />
                 <Route path="auth">
                     <Route path="admin-login" element =<Public> {<AdminLogin />} </Public> />
                 </Route>
@@ -25,7 +33,7 @@ const Routing = () =>{
                     <Route path="update-category/:id" element ={<Private> <UpdateCategory /> </Private>} />
                     <Route path="create-product" element ={<Private> <CreateProduct /> </Private>} />
                 </Route>
-                                  
+
             </Routes>
         </BrowserRouter>
     );

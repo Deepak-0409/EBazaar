@@ -28,7 +28,7 @@ module.exports.register = async (req,res) => {
             }
             else
             {
-                return res.status(400).json({errors: [{msg: email + " is already taken"}]});
+                return res.status(400).json({errors: [{msg:"Email already taken",param:'email'}]});
             }
         }
         catch(error){
@@ -69,13 +69,13 @@ module.exports.login = async(req,res) => {
                 }
                 else
                 {
-                    return res.status(400).json({errors: [{msg: "Invalid Password!"}]});
+                    return res.status(400).json({errors: [{msg: "Invalid Password!",param:'password'}]});
                 }
 
             }
             else
             {
-                return res.status(400).json({errors: [{msg: email+ " is not found"}]});
+                return res.status(400).json({errors: [{msg: email+ " is not found",param:'email'}]});
             }
         } 
         catch (error) {

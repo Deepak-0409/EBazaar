@@ -4,7 +4,7 @@ import { useDispatch } from "react-redux";
 import ScreenHeader from "../../components/ScreenHeader";
 import Wrapper from "./Wrapper";
 import { setSuccess } from "../../store/reducers/globalReducer";
-import { useFetchCategoryQuery, useGetQuery, useUpdateCategoryMutation } from "../../store/services/categoryServices";
+import { useFetchCategoryQuery, useUpdateCategoryMutation } from "../../store/services/categoryServices";
 import Spinner from "../../components/Spinner";
 
 const UpdateCategory = () => {

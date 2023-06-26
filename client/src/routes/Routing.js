@@ -12,6 +12,8 @@ import Home from "../screens/home/Home";
 import Login from "../screens/home/auth/Login";
 import Register from "../screens/home/auth/Register";
 import Dashboard from "../screens/user/Dashboard";
+import UserRoute from "./UserRoute";
+import UserAuthRoute from "./UserAuthRoute";
 
 const Routing = () =>{
     
@@ -19,9 +21,13 @@ const Routing = () =>{
         <BrowserRouter>
             <Routes>
                 <Route path ="/" element ={<Home/>} />
-                <Route path ="login" element ={<Login/>} />
-                <Route path ="register" element ={<Register/>} />
-                <Route path ="user" element ={<Dashboard/>} />
+                <Route element={<UserAuthRoute/>}>
+                    <Route path ="login" element ={<Login/>} />
+                    <Route path ="register" element ={<Register/>} />
+                </Route>
+                <Route element={<UserRoute/>}>
+                    <Route path ="user" element ={<Dashboard/>} />
+                </Route>
                 <Route path="auth">
                     <Route path="admin-login" element =<Public> {<AdminLogin />} </Public> />
                 </Route>

@@ -71,10 +71,18 @@ const categoryService = createApi({
                         method: 'GET'
                     }
                 }
+            }),
+            randomCategories: builder.query({
+                query: ()=> {
+                    return {
+                        url: 'random-categories',
+                        method: 'GET'
+                    }
+                }
             })
         }
     }
 })
 
-export const {useCreateMutation, useGetQuery, useFetchCategoryQuery, useUpdateCategoryMutation, useDeleteCategoryMutation, useAllCategoriesQuery} = categoryService;
+export const {useCreateMutation, useGetQuery, useFetchCategoryQuery, useUpdateCategoryMutation, useDeleteCategoryMutation, useAllCategoriesQuery, useRandomCategoriesQuery} = categoryService;
 export default categoryService;

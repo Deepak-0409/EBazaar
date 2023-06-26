@@ -26,6 +26,7 @@ const Products = () => {
         return  () =>{
             dispatch(clearMessage);
         }
+         // eslint-disable-next-line
     },[])
 
     const [delProduct, response] = useDeleteProductMutation();

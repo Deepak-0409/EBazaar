@@ -4,23 +4,19 @@ import {motion} from "framer-motion"
 import { useState,useEffect } from "react";
 import { useUserLoginMutation } from "../../../store/services/authService";
 import { setUserToken } from "../../../store/reducers/authReducer";
+import { useForm } from "../../../hooks/Form";
+import { showError } from "../../../utils/ShowError";
 import Header from "../../../components/home/Header";
 import Nav from "../../../components/home/Nav";
 
 const Login = () =>{
     const [errors, setErrors] = useState([]);
-    const [state,setState] = useState({
+    const {state,onChange} = useForm({
         email:'',
         password:''
     });
 
-    const onChange = e =>{
-        setState({...state,[e.target.name]:e.target.value})
-    }
-    
     const [loginUser, response] = useUserLoginMutation();
-
-
     
     const onSubmit = e =>{
         e.preventDefault();
@@ -32,6 +28,7 @@ const Login = () =>{
         {
             setErrors(response?.error?.data?.errors);
         }
+        // eslint-disable-next-line
     },[response?.error?.data])
 
     const dispatch = useDispatch(); 
@@ -43,19 +40,10 @@ const Login = () =>{
             dispatch(setUserToken(response?.data?.token)); 
             navigate("/user");
         }
+        // eslint-disable-next-line
     },[response.isSuccess])
 
-    const showError = name =>{
-        const exist = errors.find(err => err.param ===name);
-
-        if(exist){
-            return exist.msg;
-        }
-        else  
-        {
-            return false;
-        }
-    }
+    
 
     return(
         <>
@@ -70,13 +58,13 @@ const Login = () =>{
                         <h1 className="heading mb-5 text-center ">Login</h1>
                         <div className="mb-4">
                             <label htmlFor="email" className="label text-gray-700">email</label>
-                            <input type="email" name="email" id="email" value={state.email} className={`form-input ${showError('email') ? 'border-rose-600' : 'border-gray-300'}`} placeholder="abcd@gmail.com" onChange={onChange}/>
-                            {showError('email') && <span className="error">{showError('email')}</span>}
+                            <input type="email" name="email" id="email" value={state.email} className={`form-input ${showError(errors,'email') ? 'border-rose-600' : 'border-gray-300'}`} placeholder="abcd@gmail.com" onChange={onChange}/>
+                            {showError(errors,'email') && <span className="error">{showError(errors,'email')}</span>}
                         </div>
                         <div className="mb-4">
                             <label htmlFor="password" className="label text-gray-700">password</label>
-                            <input type="password" name="password" id="password" value={state.password} className={`form-input ${showError('password') ? 'border-rose-600' : 'border-gray-300'}`} placeholder="Enter Password" onChange={onChange}/>
-                            {showError('password') && <span className="error">{showError('password')}</span>}
+                            <input type="password" name="password" id="password" value={state.password} className={`form-input ${showError(errors,'password') ? 'border-rose-600' : 'border-gray-300'}`} placeholder="Enter Password" onChange={onChange}/>
+                            {showError(errors,'password') && <span className="error">{showError(errors,'password')}</span>}
                         </div>
                         <div className="mt-10 mb-4 text-center">
                             <input type="submit" value={`${response.isLoading ? 'Loading...' : 'Log In'}`} className="btn-indigo w-full md:w-3/5 lg:w-2/5 " disabled={response.isLoading ? true : false}/>

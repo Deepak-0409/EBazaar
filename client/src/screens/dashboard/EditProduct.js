@@ -1,4 +1,4 @@
-import { useState,useEffect, useLayoutEffect } from "react";
+import { useState,useEffect} from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import {TwitterPicker} from "react-color";
@@ -8,7 +8,7 @@ import toast, { Toaster } from 'react-hot-toast';
 import ReactQuill from "react-quill";
 import 'react-quill/dist/quill.snow.css';
 import { useAllCategoriesQuery } from "../../store/services/categoryServices";
-import { useGetProductQuery, useUpdateProductMutation, useDeleteProductMutation} from "../../store/services/productService";
+import { useGetProductQuery, useUpdateProductMutation} from "../../store/services/productService";
 import Spinner from "../../components/Spinner";
 import Wrapper from "./Wrapper";
 import ScreenHeader from "../../components/ScreenHeader";
@@ -90,13 +90,14 @@ const EditProduct = () => {
         }
         // eslint-disable-next-line
     }, [response?.isSuccess])
-
+    
     const createProduct = e =>{
         e.preventDefault();
         updateProduct(state);
     }
     useEffect(()=> {
         setState({...state,description: value})
+        // eslint-disable-next-line
     },[value])
     
     useEffect(() => {
@@ -105,6 +106,7 @@ const EditProduct = () => {
             setValue(parse(product.description));
             setSizeList(product.sizes);
         }
+        // eslint-disable-next-line
     },[product])
 
     return (

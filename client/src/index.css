@@ -41,7 +41,6 @@
         @apply w-full max-h-48 h-full rounded-md overflow-hidden mt-3
     }
  
-   
     .size{
         @apply border-2 border-gray-400 ml-2 px-3 py-1.5 mt-2 uppercase cursor-pointer rounded text-gray-300 text-sm hover:bg-gray-700
     }
@@ -63,7 +62,7 @@
     }
 
     .nav{
-        @apply bg-white w-full h-20 flex items-center shadow-sm
+        @apply bg-white w-full h-20 flex items-center shadow-sm top-0 right-0 left-0 fixed z-50
     }
 
     .nav-li{
@@ -79,7 +78,7 @@
     }
 
     .header{
-        @apply -z-10 w-full h-96 bg-[url('./assets/images/header3.jpg')] bg-no-repeat bg-cover relative 
+        @apply -z-10 mt-20 w-full h-96 bg-[url('./assets/images/header3.jpg')] bg-no-repeat bg-cover relative 
     }
     
     .header-cover{
@@ -88,6 +87,18 @@
 
     .header-heading{
         @apply text-white text-2xl capitalize font-medium
+    }
+    
+    .account-list{
+        @apply flex items-center px-3 py-3.5 rounded-md
+    }
+
+    .account-list-title{
+        @apply block ml-3 font-medium text-sm text-gray-700 capitalize
+    }
+
+    .active{
+        @apply bg-blue-50 
     }
     
     .flex-y{
@@ -99,7 +110,10 @@
     .heading{
         @apply text-xl capitalize font-semibold 
     }
+    
+    
 }
+
 .font-brandTitle
 {
     font-family: 'Righteous', cursive;
@@ -124,3 +138,40 @@
 .quill > .ql-container > .ql-editor.ql-blank::before{
     @apply text-gray-400 
 }
+
+.slide{
+    @apply relative
+}
+
+.slide-img{
+    @apply absolute inset-0
+}
+
+.category-slider{
+    @apply overflow-hidden rounded-lg relative flex justify-center items-center capitalize !important 
+}
+.category-swiper{
+    @apply w-full h-[150px] mb-20 !important 
+}
+.swiper {
+    width: 100%;
+    height: 70vh;
+  }
+  
+.swiper-slide {
+    text-align: center;
+    font-size: 18px;
+    background: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+.swiper-slide img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+

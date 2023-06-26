@@ -5,24 +5,22 @@ import { useDispatch } from "react-redux";
 import { useUserRegisterMutation  } from "../../../store/services/authService";
 import { setUserToken } from "../../../store/reducers/authReducer";
 import { setSuccess } from "../../../store/reducers/globalReducer";
+import { useForm } from "../../../hooks/Form";
+import { showError } from "../../../utils/ShowError";
 import Header from "../../../components/home/Header";
 import Nav from "../../../components/home/Nav";
 
 const Register = () =>{
     const [errors, setErrors] = useState([]);
 
-    const [state,setState] = useState({
+    const {state,onChange} = useForm({
         name:"",
         email:"",
         password:""
     });
-     
+
     const [registerUser,response]= useUserRegisterMutation();
     console.log("response: ",response);
-
-    const onChange = e =>{
-        setState({...state,[e.target.name]:e.target.value});
-    }
 
     const onSubmit = e =>{
         e.preventDefault();
@@ -34,6 +32,7 @@ const Register = () =>{
         {
             setErrors(response?.error?.data?.errors);
         }
+        // eslint-disable-next-line
     },[response?.error?.data])
 
     const dispatch = useDispatch(); 
@@ -46,20 +45,9 @@ const Register = () =>{
             dispatch(setSuccess(response?.data?.msg));
             navigate("/user");
         }
+        // eslint-disable-next-line
     },[response.isSuccess])
 
-    
-    const showError = name =>{
-        const exist = errors.find(err => err.param ===name);
-
-        if(exist){
-            return exist.msg;
-        }
-        else  
-        {
-            return false;
-        }
-    }
     return(
         <>
         <Nav />
@@ -73,18 +61,18 @@ const Register = () =>{
                         <h1 className="heading mb-5 text-center ">Sign Up</h1>
                         <div className="mb-4">
                             <label htmlFor="name" className="label text-gray-700">username</label>
-                            <input type="text" name="name" id="name" className={`form-input ${showError('name') ? 'border-rose-600' : 'border-gray-300'}`} value={state.name} placeholder="Enter Username" onChange={onChange}/>
-                            {showError('name') && <span className="error">{showError('name')}</span>}
+                            <input type="text" name="name" id="name" className={`form-input ${showError(errors,'name') ? 'border-rose-600' : 'border-gray-300'}`} value={state.name} placeholder="Enter Username" onChange={onChange}/>
+                            {showError(errors,'name') && <span className="error">{showError(errors,'name')}</span>}
                         </div>
                         <div className="mb-4">
                             <label htmlFor="email" className="label text-gray-700">email</label>
-                            <input type="email" name="email" id="email" className={`form-input ${showError('name') ? 'border-rose-600' : 'border-gray-300'}`} value={state.email} placeholder="abcd@gmail.com" onChange={onChange}/>
-                            {showError('email') && <span className="error">{showError('email')}</span>}
+                            <input type="email" name="email" id="email" className={`form-input ${showError(errors,'name') ? 'border-rose-600' : 'border-gray-300'}`} value={state.email} placeholder="abcd@gmail.com" onChange={onChange}/>
+                            {showError(errors,'email') && <span className="error">{showError(errors,'email')}</span>}
                         </div>
                         <div className="mb-4">
                             <label htmlFor="password" className="label text-gray-700">password</label>
-                            <input type="password" name="password" id="password" className={`form-input ${showError('name') ? 'border-rose-600' : 'border-gray-300'}`} value={state.password} placeholder="Enter Password" onChange={onChange}/>
-                            {showError('password') && <span className="error">{showError('password')}</span>}
+                            <input type="password" name="password" id="password" className={`form-input ${showError(errors,'name') ? 'border-rose-600' : 'border-gray-300'}`} value={state.password} placeholder="Enter Password" onChange={onChange}/>
+                            {showError(errors,'password') && <span className="error">{showError(errors,'password')}</span>}
                         </div>
                         <div className="mt-10 mb-4 text-center">
                             <input type="submit" value={`${response.isLoading ? 'Loading...' : 'SignUp'}`} className="btn-indigo w-full md:w-3/5 lg:w-2/5 " disabled={response.isLoading ? true : false}/>

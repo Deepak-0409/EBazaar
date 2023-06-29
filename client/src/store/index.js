@@ -4,18 +4,20 @@ import categoryService from "./services/categoryServices";
 import productService from "./services/productService";
 import authReducer from "./reducers/authReducer";
 import globalReducer from "./reducers/globalReducer";
+import homeProducts from "./services/homeProducts";
 
 const store = configureStore({
     reducer:{
         [authService.reducerPath]: authService.reducer,
         [categoryService.reducerPath]: categoryService.reducer,
         [productService.reducerPath]: productService.reducer,
+        [homeProducts.reducerPath]: homeProducts.reducer,
         "authReducer":authReducer,
         "globalReducer":globalReducer
     },
     middleware: (getDefaultMiddleware) =>
     {
-        return getDefaultMiddleware().concat(categoryService.middleware, authService.middleware, productService.middleware)
+        return getDefaultMiddleware().concat(categoryService.middleware, authService.middleware, productService.middleware, homeProducts.middleware)
     }
 }); 
 

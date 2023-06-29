@@ -6,8 +6,6 @@ import Spinner from "../Spinner";
 
 const Slider = () => {
   const {data,isFetching} = useRandomCategoriesQuery();
-  console.log(data)
-  console.log(data?.categories.length);
   const categories=data?.categories;  
   
   return isFetching ? ( 
@@ -18,13 +16,13 @@ const Slider = () => {
     {categories.length>0 && categories.map((cat,index)=>(
       <SwiperSlide className="slide" key={cat._id}>
           <div className="slide-img">
-            <img src={`/images/slider${index+1}.jpg`} alt="" />
+            <img src={`/images/slider/slider${index+1}.jpg`} alt="" />
           </div>
           <div className="absolute inset-0 w-full h-full bg-black-1000/50">
             <div className="my-container h-[70vh] flex flex-col items-center justify-center">
               <h1 className="text-white text-xl font-medium capitalize">{cat.name}</h1>
               <div className="mt-10">
-                <Link to="/" className="btn-indigo text-sm">Browse Collections</Link>
+                <Link to={`/category-products/${cat.name}`} className="btn-indigo text-sm">Browse Collections</Link>
               </div>
             </div>
           </div>

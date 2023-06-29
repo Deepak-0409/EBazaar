@@ -13,7 +13,7 @@ const Categories = () => {
         {[1,2,3,4].map(item => (
             <div className="w-6/12 sm:w-4/12 md:w-3/12 p-4" key={item}>
                 <Skeleton> 
-                    <Thumbnail/>
+                    <Thumbnail height="150px"/>
                 </Skeleton>
             </div>
         ))}
@@ -40,12 +40,14 @@ const Categories = () => {
 
             return(
                 <SwiperSlide key={category._id} virtualIndex={index} className='category-slider'>
+                    <Link to={`/category-products/${category.name}`} className="text-white text-base font-medium capitalize">
                         <div className="w-full h-full rounded-lg overflow-hidden">
-                            <img src={`/images/slider${i}.jpg`} alt="" className="w-full h-full object-cover"/>
+                            <img src={`/images/slider/slider${i}.jpg`} alt="" className="w-full h-full object-cover"/>
                         </div>
                         <div className="absolute inset-0 w-full h-full bg-black-1000/50 flex items-center justify-center p-4">
-                            <Link to="/" className="text-white text-base font-medium capitalize">{category.name}</Link>
+                            {category.name}
                         </div>
+                    </Link>
                 </SwiperSlide>
         )})}
     </Swiper>

@@ -2,7 +2,7 @@ import { useState,useEffect} from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import {TwitterPicker} from "react-color";
-import parse from 'html-react-parser';
+import { convert } from 'html-to-text';
 import { v4 as uuidv4 } from 'uuid';
 import toast, { Toaster } from 'react-hot-toast';
 import ReactQuill from "react-quill";
@@ -103,7 +103,7 @@ const EditProduct = () => {
     useEffect(() => {
         if(!fetching){
             setState(product);
-            setValue(parse(product.description));
+            setValue(convert(product.description));
             setSizeList(product.sizes);
         }
         // eslint-disable-next-line

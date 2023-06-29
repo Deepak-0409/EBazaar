@@ -14,6 +14,8 @@ import Register from "../screens/home/auth/Register";
 import Dashboard from "../screens/user/Dashboard";
 import UserRoute from "./UserRoute";
 import UserAuthRoute from "./UserAuthRoute";
+import CategoryProducts from "../screens/home/CategoryProducts";
+import Product from "../screens/home/Product";
 
 const Routing = () =>{
     
@@ -21,6 +23,8 @@ const Routing = () =>{
         <BrowserRouter>
             <Routes>
                 <Route path ="/" element ={<Home/>} />
+                <Route path ="category-products/:name/:page?" element ={<CategoryProducts/>} />
+                <Route path ="product/:id" element ={<Product/>} />
                 <Route element={<UserAuthRoute/>}>
                     <Route path ="login" element ={<Login/>} />
                     <Route path ="register" element ={<Register/>} />

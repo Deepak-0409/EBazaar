@@ -58,7 +58,15 @@
         @apply block mt-1.5 text-rose-600 font-medium text-sm
     }
     .pagination-link {
-        @apply border border-gray-800 text-gray-500 text-sm font-medium block py-2 px-4 bg-gray-900 
+        @apply border border-r-0 border-gray-800 text-gray-500 text-sm font-medium block py-2 px-4 bg-gray-900 
+    }
+
+    .pagination-link-light {
+        @apply border border-r-0 border-gray-400 text-black-1000 text-sm font-medium block py-2 px-4 bg-white
+    }
+
+    .pagination-li:last-child{
+        @apply border-r border-r-gray-400
     }
 
     .nav{

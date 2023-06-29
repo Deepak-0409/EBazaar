@@ -1,8 +1,8 @@
 import Animate from "../Animate"
 
-const Thumbnail = () => {
+const Thumbnail = ({height}) => {
   return (
-    <div className={`w-full h-[150px] relative rounded-md bg-indigo-50 overflow-hidden]`}>
+    <div className={`w-full h-[${height}] relative rounded-md bg-indigo-50 overflow-hidden`}>
         <Animate/>
     </div>
   )

@@ -3,7 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import {TwitterPicker} from "react-color";
 import { v4 as uuidv4 } from 'uuid';
-import parse from "html-react-parser"
+import { convert } from 'html-to-text';
 import toast, { Toaster } from 'react-hot-toast';
 import ReactQuill from "react-quill";
 import 'react-quill/dist/quill.snow.css';
@@ -114,7 +114,7 @@ const CreateProduct = () => {
 
     const createProduct = e =>{
         e.preventDefault(); 
-        const desc = parse(value).props.children;
+        const desc = convert(value);
         const formData = new FormData();
         formData.append('data',JSON.stringify(state));
         formData.append('sizes',JSON.stringify(sizeList));

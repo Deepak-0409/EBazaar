@@ -50,8 +50,18 @@ const cartReducer = createSlice({
                 localStorage.setItem("cart",JSON.stringify(state.cart));
             }
         },
+        rmvItem: (state,{payload}) =>{
+            const item = state.cart.find(item => item._id === payload);
+            if(item){
+                const index = state.cart.indexOf(item);
+                state.items -= item.quantity;
+                state.total -= discountPrice(item.price,item.discount)*item.quantity;
+                state.cart.splice(index,1);
+                localStorage.setItem("cart",JSON.stringify(state.cart));
+            }
+        }
     }
 
 })
-export const {addCart,incQuantity,decQuantity} = cartReducer.actions;
+export const {addCart,incQuantity,decQuantity,rmvItem} = cartReducer.actions;
 export default cartReducer.reducer;

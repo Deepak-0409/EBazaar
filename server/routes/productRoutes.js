@@ -9,6 +9,7 @@ router.post("/create-product",Authorization.authorized,Product.create);
 router.get("/products/:page?",Authorization.authorized,Product.get);
 router.get("/product/:id",Product.getProduct);
 router.get("/category-products/:name/:page?",HomeProducts.categoryProducts);
+router.get("/search-products/:keyword/:page?",HomeProducts.categoryProducts);
 router.put("/product",[Authorization.authorized,productValidations],Product.updateProduct);
 router.delete("/delete/:id",Authorization.authorized,Product.deleteProduct);
 

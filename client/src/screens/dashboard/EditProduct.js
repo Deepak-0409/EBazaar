@@ -2,7 +2,7 @@ import { useState,useEffect} from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import {TwitterPicker} from "react-color";
-import { convert } from 'html-to-text';
+import {convert} from "html-to-text"
 import { v4 as uuidv4 } from 'uuid';
 import toast, { Toaster } from 'react-hot-toast';
 import ReactQuill from "react-quill";
@@ -92,7 +92,9 @@ const EditProduct = () => {
     }, [response?.isSuccess])
     
     const createProduct = e =>{
+        const desc=convert(value);
         e.preventDefault();
+        setState({...state,description:desc});
         updateProduct(state);
     }
     useEffect(()=> {
@@ -108,6 +110,7 @@ const EditProduct = () => {
         }
         // eslint-disable-next-line
     },[product])
+    
 
     return (
         <Wrapper>

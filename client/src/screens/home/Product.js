@@ -3,6 +3,7 @@ import {GoChevronRight} from "react-icons/go"
 import Nav from "../../components/home/Nav"
 import { useGetProductQuery } from "../../store/services/productService";
 import ProductDetailCard from "../../components/home/ProductDetailCard";
+import ProductLoader from "../../components/home/ProductLoader";
 
 const Product = () => {
   const {id} = useParams();
@@ -10,7 +11,9 @@ const Product = () => {
   return <>
         <Nav/>
         <div className="my-container mt-24">
-          {isFetching ? 'loading' :(
+          {isFetching ? (
+            <ProductLoader/>
+          ) :(
           <>
             <ul className="flex items-center ">
               <li className="capitalize text-gray-500">

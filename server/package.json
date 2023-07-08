@@ -21,6 +21,7 @@
     "jsonwebtoken": "^9.0.0",
     "mongoose": "^6.9.0",
     "nodemon": "^2.0.20",
+    "stripe": "^12.11.0",
     "uuid": "^9.0.0"
   }
 }

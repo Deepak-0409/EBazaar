@@ -1,19 +1,25 @@
 import { useDispatch, useSelector } from "react-redux"
 import { BsTrashFill } from "react-icons/bs";
 import { motion } from "framer-motion";
+import { useNavigate } from "react-router-dom";
 import currency from "currency-formatter";
-import Nav from "../../components/home/Nav"
 import { discountPrice } from "../../utils/DiscountPrice";
 import { incQuantity,decQuantity, rmvItem } from "../../store/reducers/cartReducer";
 import Quantity from "../../components/home/Quantity";
-import { useNavigate } from "react-router-dom";
+import Nav from "../../components/home/Nav"
+import { useSendPaymentMutation } from "../../store/services/paymentService";
+import { useEffect } from "react";
 
 const Cart = () => {
     const {cart,total} = useSelector(state => state.cartReducer);
-    const {userToken} = useSelector(state => state.authReducer);
+    const {userToken,user} = useSelector(state => state.authReducer);
+    const [doPayment,response] = useSendPaymentMutation();
+    
+    console.log(response);
 
     const navigate = useNavigate();
     const dispatch = useDispatch();
+
     const inc = (id) => {
         dispatch(incQuantity(id));
     }
@@ -28,17 +34,25 @@ const Cart = () => {
             dispatch(rmvItem(id));
         } 
     }
+    
 
     const makePayment = () => {
         if(userToken)
         {
-            
+            doPayment({cart, id: user.id});
         }
         else
         {
             navigate("/login");
         }
     }
+
+    useEffect(() => {
+        if(response?.isSuccess)
+        {
+            window.location.href = response?.data?.url;
+        }
+    },[response]);
 
     return (
         <>
@@ -92,7 +106,7 @@ const Cart = () => {
                         <div className="bg-emerald-50 p-4 flex justify-end rounded-md mt-5">
                             <div>
                                 <span className="text-md font-semibold text-green-600 mr-12">{currency.format(total,{code:"INR"})}</span>
-                                <button className="btn-primary text-sm uppercase" onClick={makePayment}>Checkout</button>
+                                <button className="btn-primary text-sm uppercase" onClick={makePayment}>{response.isLoading ? "Loading..." : "Checkout"}</button>
                             </div>
                         </div> 
                     </>

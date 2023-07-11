@@ -47,20 +47,20 @@ const Categories = () => {
             </ScreenHeader>
             {success && <div className="alert-success">{success}</div>}
             {!isFetching ? data?.categories?.length > 0 && <><div>
-                <table className="w-full bg-gray-900 rounded-md">
+                <table className="dashboard-table">
                     <thead>
-                        <tr className="border-b border-gray-500/[0.7] text-left">
-                            <th className="p-3 uppercase text-sm font-medium text-gray-500">name</th>
-                            <th className="p-3 uppercase text-sm font-medium text-gray-500">edit</th>
-                            <th className="p-3 uppercase text-sm font-medium text-gray-500">delete</th>
+                        <tr className="dashboard-tr">
+                            <th className="dashboard-th text-left">name</th>
+                            <th className="dashboard-th">edit</th>
+                            <th className="dashboard-th">delete</th>
                         </tr>
                     </thead>
                     <tbody>
                         {data?.categories?.map(category => (
                             <tr key = {category._id}>
-                                <td className="p-3 capitalize text-sm text-gray-400 hover:text-gray-200">{category.name}</td>
-                                <td className="p-3 capitalize text-sm text-gray-400 hover:text-gray-200"><Link to={`/dashboard/update-category/${category._id}`} className="btn-warning">edit</Link></td>
-                                <td className="p-3 capitalize text-sm text-gray-400 hover:text-gray-200"><button className="btn-danger capitalize" onClick = {() => deleteCategory(category._id)}>delete</button></td>
+                                <td className="dashboard-td text-left">{category.name}</td>
+                                <td className="dashboard-td"><Link to={`/dashboard/update-category/${category._id}`} className="btn-warning">edit</Link></td>
+                                <td className="dashboard-td"><button className="btn-danger capitalize" onClick = {() => deleteCategory(category._id)}>delete</button></td>
                             </tr>
                         ))}
                     </tbody>

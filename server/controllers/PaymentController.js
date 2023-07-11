@@ -1,5 +1,8 @@
 const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
 const User = require('../models/User');
+const Order = require('../models/Order');
+const Product = require('../models/Product');
+
 class PaymentController {
     async paymentCheckout(req, res) {
         const { cart, id } = req.body;
@@ -10,12 +13,14 @@ class PaymentController {
 
         const cartData = cart.map(item => {
             return {
+
                 _id: item._id,
                 title: item.title,
                 quantity: item.quantity,
                 price: item.price,
                 size: item.size,
                 color: item.color,
+                userId: user._id,
             }
         });
 
@@ -113,21 +118,48 @@ class PaymentController {
             case 'payment_intent.succeeded':
                 const paymentIntentSucceeded = event.data.object;
                 break;
-            case 'checkout.session.async_payment_failed':
-                const checkoutSessionAsyncPaymentFailed = event.data.object;
-                break;
-            case 'checkout.session.async_payment_succeeded':
-                const checkoutSessionAsyncPaymentSucceeded = event.data.object;
-                break;
             case 'checkout.session.completed':
                 const data = event.data.object;
-                const customer = await stripe.customers.retrieve(data.customer);
+                let customer = await stripe.customers.retrieve(data.customer);
+                customer = JSON.parse(customer?.metadata?.orderData);
+                customer.forEach(async ctr => {
+                    try {
+                        await Order.create({
+                            productId: ctr._id,
+                            userId: ctr.userId,
+                            size: ctr.size,
+                            color: ctr.color,
+                            quantities: ctr.quantity,
+                            address: data.shipping_details.address
+                        });
+                        const product = await Product.findById(ctr._id);
+                        if(product)
+                        {
+                            let stock = product.stock - ctr.quantity;
+                            if(stock<0)
+                            {
+                                stock = 0;
+                            }
+                            await Product.findByIdAndUpdate(ctr._id,{stock: stock}, {new: true});
+                        }
+                    } catch (error) {
+                        console.log(error.message)
+                        return response.status(500).json('Server Internal Error');
+                    }
+                })
                 break;
             default:
                 console.log(`Unhandled event type ${event.type}`);
         }
-
-        response.send();
+    }
+    async verifyPayment(req, res) {
+        const { id } = req.params;
+        try {
+            const session = await stripe.checkout.sessions.retrieve(id);
+            return res.status(200).json({message: "Your payment is successful", status: session.payment_status});
+        } catch (error) {
+            return res.status(500).json(error.message);
+        }
     }
 }
 

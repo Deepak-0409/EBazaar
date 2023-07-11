@@ -3,7 +3,13 @@ import {createApi, fetchBaseQuery} from "@reduxjs/toolkit/query/react"
 const paymentService = createApi({
     reducerPath: 'payment',
     baseQuery: fetchBaseQuery({
-        baseUrl: 'http://localhost:3500/api/'
+        baseUrl: 'http://localhost:3500/api/',
+        prepareHeaders: (headers,{getState}) => {
+            const reducers = getState();
+            const token = reducers?.authReducer?.userToken;
+            headers.set("authorization",token ? `Bearer ${token}` : "");
+            return headers;
+        }
     }),
     endpoints: (builder) => {
         return {
@@ -15,10 +21,18 @@ const paymentService = createApi({
                         body: cartData
                     }
                 }
-            }),  
+            }), 
+            verifyPayment: builder.query({
+                query: (id) =>{
+                    return {
+                        url:`/verify-payment/${id}`,
+                        method:'GET',
+                    }
+                }
+            }), 
         }
     }
 })
 
-export const {useSendPaymentMutation} = paymentService;
+export const {useSendPaymentMutation, useVerifyPaymentQuery} = paymentService;
 export default paymentService;

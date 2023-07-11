@@ -13,7 +13,7 @@ const Sidebar = ({side,closeSidebar}) => {
                 <i className="fa-regular fa-rectangle-list fa-lg mr-2"></i><Link to="/dashboard/products" className="text-lg block w-full">Products</Link>
                 </li>
                 <li className="px-5 py-3 cursor-pointer transition-all text-white flex items-center hover:bg-gray-600 hover:transition-all">
-                <i className="fa-solid fa-bag-shopping fa-lg mr-3"></i><Link to="/dashboard/products" className="text-lg block w-full">Orders</Link>
+                <i className="fa-solid fa-bag-shopping fa-lg mr-3"></i><Link to="/dashboard/orders" className="text-lg block w-full">Orders</Link>
                 </li>
                 <li className="px-4 py-3 cursor-pointer transition-all text-white flex items-center hover:bg-gray-600 hover:transition-all">
                 <i className="fa-solid fa-user-group fa-lg mr-2"></i><Link to="/dashboard/products" className="text-lg block w-full">Customers</Link>

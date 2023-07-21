@@ -1,13 +1,13 @@
 import {createApi, fetchBaseQuery} from "@reduxjs/toolkit/query/react"
 
-const orderService  = createApi({
-    reducerPath: 'orders',
+const userOrderService  = createApi({
+    reducerPath: 'user-orders',
     tagTypes: "orders",
     baseQuery: fetchBaseQuery({
         baseUrl: 'http://localhost:3500/api/',
         prepareHeaders: (headers,{getState}) => {
             const reducers = getState();
-            const token = reducers?.authReducer?.adminToken;
+            const token = reducers?.authReducer?.userToken;
             headers.set("authorization",token ? `Bearer ${token}` : "");
             return headers;
         }
@@ -15,9 +15,9 @@ const orderService  = createApi({
     endpoints: (builder) => {
         return {
             getOrders: builder.query({
-                query: (page) =>{
+                query: (data) =>{
                     return {
-                        url:`/orders?page=${page}`,
+                        url:`/orders?page=${data.page}&userId=${data.userId}`, 
                         method:'GET',
                     }
                 },
@@ -31,20 +31,29 @@ const orderService  = createApi({
                     }
                 },
                 providesTags: ["orders"]
-            }), 
-            dispatchOrder: builder.mutation({
+            }),
+            receiveOrder: builder.mutation({
                 query: (id) =>{
                     return {
-                        url:`/order-update?id=${id}&status=dispatched`,
+                        url:`/order-update?id=${id}&status=received`,
                         method:'PUT',
                     }
                 },
                 invalidatesTags: ["orders"]
-            }), 
-             
+            }),
+            postReview: builder.mutation({
+                query: (body) =>{
+                    return {
+                        url:`/post-review`,
+                        method:'POST',
+                        body: body
+                    }
+                },
+                invalidatesTags: ["orders"]
+            }),
         }
     }
 })
 
-export const {useGetOrdersQuery,useGetOrderDetailsQuery,useDispatchOrderMutation} = orderService ;
-export default orderService ;
+export const {useGetOrdersQuery,useGetOrderDetailsQuery,useReceiveOrderMutation,usePostReviewMutation} = userOrderService ;
+export default userOrderService ;

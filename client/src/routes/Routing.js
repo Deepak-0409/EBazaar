@@ -19,6 +19,9 @@ import Product from "../screens/home/Product";
 import SearchProducts from "../screens/home/SearchProducts";
 import Cart from "../screens/home/Cart";
 import Orders from "../screens/dashboard/Orders";
+import OrderDetails from "../screens/dashboard/OrderDetails";
+import UserOrders from "../screens/user/UserOrders";
+import UserOrderDetails from "../screens/user/UserOrderDetails";
 
 const Routing = () =>{
     
@@ -36,6 +39,8 @@ const Routing = () =>{
                 </Route>
                 <Route element={<UserRoute/>}>
                     <Route path ="user" element ={<Dashboard/>} />
+                    <Route path ="orders/:page?" element ={<UserOrders/>} />
+                    <Route path ="user-order-details/:id" element ={<UserOrderDetails/>} />
                 </Route>
                 <Route path="auth">
                     <Route path="admin-login" element =<Public> {<AdminLogin />} </Public> />
@@ -48,6 +53,7 @@ const Routing = () =>{
                     <Route path="update-category/:id" element ={<Private> <UpdateCategory /> </Private>} />
                     <Route path="create-product" element ={<Private> <CreateProduct /> </Private>} />
                     <Route path="orders/:page?" element ={<Private> <Orders /> </Private>} />
+                    <Route path="order-details/:id" element ={<Private> <OrderDetails /> </Private>} />
                 </Route>
 
             </Routes>

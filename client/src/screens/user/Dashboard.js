@@ -23,7 +23,7 @@ const Dashboard = () => {
       navigate("/user");
     }
   },[isSuccess])
-
+  
   return (
     <>
       <Nav />

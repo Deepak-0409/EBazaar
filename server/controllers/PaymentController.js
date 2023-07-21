@@ -124,13 +124,21 @@ class PaymentController {
                 customer = JSON.parse(customer?.metadata?.orderData);
                 customer.forEach(async ctr => {
                     try {
+                        let reviewStatus=false;
+                        const findOrder = await Order.findOne({productId: ctr._id, userId: ctr.userId}).where('review').equals(true);
+                        if(findOrder)
+                        {
+                            reviewStatus=true;
+                        }
+
                         await Order.create({
                             productId: ctr._id,
                             userId: ctr.userId,
                             size: ctr.size,
                             color: ctr.color,
                             quantities: ctr.quantity,
-                            address: data.shipping_details.address
+                            address: data.shipping_details.address,
+                            review: reviewStatus
                         });
                         const product = await Product.findById(ctr._id);
                         if(product)
@@ -151,6 +159,7 @@ class PaymentController {
             default:
                 console.log(`Unhandled event type ${event.type}`);
         }
+        response.send();
     }
     async verifyPayment(req, res) {
         const { id } = req.params;

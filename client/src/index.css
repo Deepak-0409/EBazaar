@@ -9,7 +9,7 @@
     }
     
     .btn-indigo{
-        @apply bg-indigo-600 text-white px-4 py-3 font-medium rounded-sm hover:bg-indigo-700
+        @apply bg-[#2035F2] text-white px-4 py-3 font-medium rounded-sm hover:bg-[#1b2cc6]
     }
     
     .btn-primary{
@@ -167,7 +167,9 @@
     .product-desc h3{
         @apply text-xl capitalize
     }
-    
+    .review-textarea{
+        @apply outline-none border-[2px] border-zinc-300 p-2 rounded-md overflow-hidden h-10 transition-all duration-500 focus:border-blue-500/50 focus:border-[3px] focus:transition-all focus:h-32 focus:duration-500
+    }
 }
 
 

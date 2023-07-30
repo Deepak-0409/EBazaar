@@ -22,6 +22,7 @@ import Orders from "../screens/dashboard/Orders";
 import OrderDetails from "../screens/dashboard/OrderDetails";
 import UserOrders from "../screens/user/UserOrders";
 import UserOrderDetails from "../screens/user/UserOrderDetails";
+import AboutUs from "../screens/home/AboutUs";
 
 const Routing = () =>{
     
@@ -33,6 +34,7 @@ const Routing = () =>{
                 <Route path ="search-products/:keyword/:page?" element ={<SearchProducts/>} />
                 <Route path ="product/:id" element ={<Product/>} />
                 <Route path ="cart" element ={<Cart/>} />
+                <Route path ="about" element ={<AboutUs/>} />
                 <Route element={<UserAuthRoute/>}>
                     <Route path ="login" element ={<Login/>} />
                     <Route path ="register" element ={<Register/>} />

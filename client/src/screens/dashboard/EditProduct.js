@@ -130,7 +130,7 @@ const EditProduct = () => {
                             <input type="number" name="price" className="form-control" id="price" placeholder="price..." onChange={handleInput} value={state.price}/>
                         </div>
                         <div className="w-full md:w-6/12 p-3">
-                            <label htmlFor="discount" className="label">Discount</label>
+                            <label htmlFor="discount" className="label normal-case">Discount(in %)</label>
                             <input type="number" name="discount" className="form-control" id="discount" placeholder="discount..." onChange={handleInput} value={state.discount}/>
                         </div>
                         <div className="w-full md:w-6/12 p-3">

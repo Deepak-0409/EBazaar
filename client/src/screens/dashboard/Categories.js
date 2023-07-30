@@ -18,7 +18,6 @@ const Categories = () => {
     const dispatch = useDispatch();
     const {data = [], isFetching} = useGetQuery(page);
     const [removeCategory,response] = useDeleteCategoryMutation();
-    console.log(response);
     const deleteCategory = id =>{
         if(window.confirm("Are you sure ?"))
         {
@@ -34,7 +33,7 @@ const Categories = () => {
     },[response?.data?.message])
 
     useEffect(()=>{
-        dispatch(setSuccess(success));
+        dispatch(setSuccess(success));  
         return () => {
             dispatch(clearMessage());
         }

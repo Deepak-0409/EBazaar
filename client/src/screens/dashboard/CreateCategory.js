@@ -9,7 +9,6 @@ import { setSuccess } from "../../store/reducers/globalReducer";
 const CreateCategory = () => {
     const [state, setState] = useState("");
     const [saveCategory,response] = useCreateMutation();
-    // console.log(response)
     const errors = response?.error?.data?.errors ? response?.error?.data?.errors : [];
     const submitCategory = e =>{
         e.preventDefault();

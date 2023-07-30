@@ -11,7 +11,7 @@ import Nav from "../../components/home/Nav"
 import Spinner from "../../components/Spinner"
 import { useGetOrderDetailsQuery, useReceiveOrderMutation } from "../../store/services/userOrderService"
 import { discountPrice } from "../../utils/DiscountPrice";
-import ReviewForm from "../../components/ReviewForm";
+import ReviewForm from "../../components/home/ReviewForm";
 
 const UserOrderDetails = () => {
     const { id } = useParams();
@@ -42,7 +42,6 @@ const UserOrderDetails = () => {
         upateOrderStatus(id);
     }; 
 
-    console.log(data?.order);
     return (
         <>
             <ReviewForm value={stars} viewState={viewState} toggleView={toggleView} data={data} setToast={showToast}/>

@@ -1,9 +1,11 @@
 import { useEffect, useState } from "react";
 import {BsStar,BsStarFill} from "react-icons/bs"
 import {IoClose} from "react-icons/io5"
-import { usePostReviewMutation } from "../store/services/userOrderService";
+import {motion} from "framer-motion"
+import { usePostReviewMutation } from "../../store/services/userOrderService";
 
 const ReviewForm = ({value, viewState=false, toggleView, data, setToast}) => {
+
     const [rating, setRating] = useState(value);
     const [hover, setHover] = useState(0);
     const [state, setState] = useState({
@@ -16,12 +18,14 @@ const ReviewForm = ({value, viewState=false, toggleView, data, setToast}) => {
             closeForm();
             setToast(response?.data?.message)
         }
+        // eslint-disable-next-line
     }, [response.isSuccess] );
 
     useEffect(() => { 
         setRating(value);
         setHover(0);
         setState({...state, userRating: value});
+        // eslint-disable-next-line
     }, [value] );
     
     const handleInput = e => {
@@ -50,7 +54,7 @@ const ReviewForm = ({value, viewState=false, toggleView, data, setToast}) => {
 
     return viewState ? 
         <>            
-            <div className="fixed inset-0 w-full h-full bg-black-1000/40 z-[100] flex items-center justify-center">
+            <motion.div initial={{opacity:0}} animate={{opacity:1}} className="fixed inset-0 w-full h-full bg-black-1000/40 z-[100] flex items-center justify-center">
                     <div className="w-[90%] sm:w-8/12 md:6/12 lg:w-4/12">
                         <div className="bg-white p-5 rounded-lg">
                             <div className="-mx-5 -mt-5 p-5 flex items-center justify-center rounded-t-lg bg-[#2035F2]">
@@ -91,7 +95,7 @@ const ReviewForm = ({value, viewState=false, toggleView, data, setToast}) => {
                             </form>
                         </div>
                     </div>
-                </div>
+                </motion.div>
         </>
         : '';
 }

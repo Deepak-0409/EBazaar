@@ -3,11 +3,10 @@ const globalReducer = createSlice({
     name: "global",
     initialState: {
         success: "",
-        searchBar: false
+        searchBar: false,
     },
     reducers: {
         setSuccess: (state,action) => {
-            // console.log(action)
             state.success = action.payload;
         },
         clearMessage: (state) => {

@@ -55,8 +55,6 @@ const authReducer = createSlice({
           }
         }
     }
-
-
 })
 
 export const {setAdminToken,setUserToken,logout} = authReducer.actions;

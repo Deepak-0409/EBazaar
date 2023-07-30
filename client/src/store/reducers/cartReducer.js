@@ -20,7 +20,7 @@ function calculateTotal(data){
     return total;
 }
 const cartReducer = createSlice({
-    name: "card",
+    name: "cart",
     initialState: {
         cart: cartArray.length>0 ? cartArray : [],
         items: cartArray.length>0 ? allItems(cartArray) : 0,

@@ -40,7 +40,7 @@ const AdminLogin = () => {
     return(
         <div className="bg-black-1000 h-screen flex justify-center items-center">
 
-            <form onSubmit={adminLoginFunction} className="bg-black-950 p-3 w-10/12 sm:w-8/12 md:w-6/12 lg:w-3/12 text-center rounded-md">
+            <form onSubmit={adminLoginFunction} className="bg-black-950 pb-3 pt-8 px-6 w-10/12 sm:w-8/12 md:w-6/12 lg:w-3/12 text-center rounded-md">
             
                 <h3 className="text-white mb-5 font-semibold text-2xl">Dashboard Login</h3>
                 
@@ -53,7 +53,7 @@ const AdminLogin = () => {
                 <div className="mb-5 mt-3">
                     <input className="w-full outline-none rounded p-4 " type="email" name="email" placeholder="Enter email" onChange={handleInputs} value={state.email}/>
                 </div>
-                <div className="mb-5">
+                <div className="mb-8">
                     <input className="w-full outline-none rounded p-4 " type="password" name="password" placeholder="Enter the password" onChange={handleInputs} value={state.password}/>
                 </div>
                 <div className="mb-3">

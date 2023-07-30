@@ -56,7 +56,7 @@ const Register = () =>{
                 Sign Up
             </Header>
             <div className="flex flex-wrap justify-center">
-                <motion.div initial={{opacity:0,x:"-100vw"}} animate={{opacity:1,x:0}} className="w-full sm:w-8/12 md:6/12 lg:w-4/12 p-6">
+                <motion.div initial={{opacity:0,x:"-100vw"}} transition={{duration:0.5}} animate={{opacity:1,x:0}} className="w-full sm:w-8/12 md:6/12 lg:w-4/12 p-6">
                     <form onSubmit={onSubmit} className="bg-white rounded-lg -mt-16 border border-gray-200 p-10">
                         <h1 className="heading mb-5 text-center ">Sign Up</h1>
                         <div className="mb-4">

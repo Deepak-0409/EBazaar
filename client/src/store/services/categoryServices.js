@@ -47,7 +47,6 @@ const categoryService = createApi({
             get: builder.query({
                 
                 query: (page) => {
-                    console.log(page)
                     return {
                         url: `categories/${page}`,
                         method: 'GET'

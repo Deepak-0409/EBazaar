@@ -4,6 +4,8 @@
 
 
 @layer components {
+
+/*------------------------------------------------------------ Utility classes ------------------------------------------------------------*/
     .btn-light {
         @apply bg-gray-100 px-4 py-3 font-medium rounded-lg hover:bg-gray-200
     }
@@ -13,7 +15,7 @@
     }
     
     .btn-primary{
-        @apply bg-[#32CD32] text-white px-4 py-3 font-medium rounded-md hover:bg-[#27AF27] 
+        @apply bg-[#32CD32] text-white px-4 py-3 font-medium rounded-md hover:bg-[#30bf30] transition-all
     }
 
     .btn-warning{
@@ -32,8 +34,7 @@
         @apply bg-green-100 text-green-900 p-3 mb-3 rounded-sm border-l-4 border-green-600 text-sm w-fit font-medium       
     }
 
-    .error
-    {
+    .error{
         @apply block mt-1.5 text-rose-600 font-medium text-sm
     }
 
@@ -47,6 +48,9 @@
         @apply text-xl capitalize font-semibold 
     }
 
+/* ------------------------------------------------------------ Table Styling ------------------------------------------------------------ */
+
+    /* User Table styling */
     .table-container{
         @apply rounded-lg overflow-x-auto w-full 
     }
@@ -63,6 +67,7 @@
         @apply p-4 text-sm text-gray-700 text-center
     }
     
+    /* Dashboard Table Styling */
     .dashboard-table{
         @apply w-full bg-gray-900 rounded-md
     }
@@ -79,7 +84,8 @@
         @apply p-3 capitalize text-sm text-gray-400 hover:text-gray-200 text-center
     }
 
-    /* Form Styling */
+/*------------------------------------------------------------ Dashboard Form Styling ------------------------------------------------------------*/
+
     .form-control{
         @apply bg-gray-900 p-4 rounded-sm outline-none w-full focus:ring-2 ring-gray-700 transition-all duration-500 placeholder:text-gray-500 capitalize
     }
@@ -95,7 +101,7 @@
     .input-file{
         @apply block file:py-2.5 file:px-4 file:rounded file:cursor-pointer file:bg-indigo-600 file:text-white file:border-none file:text-sm file:font-medium file:mr-4
     }
-
+    
     .preview-img{
         @apply w-full max-h-48 h-full rounded-md overflow-hidden mt-3
     }
@@ -104,17 +110,25 @@
         @apply border-2 border-gray-400 ml-2 px-3 py-1.5 mt-2 uppercase cursor-pointer rounded text-gray-300 text-sm hover:bg-gray-700
     }
 
+/*------------------------------------------------------------ Pagination Styling ------------------------------------------------------------*/
+
     .pagination-link {
         @apply border border-r-0 border-gray-800 text-gray-500 text-sm font-medium block py-2 px-4 bg-gray-900 
-    }
+        }
 
     .pagination-link-light {
         @apply border border-r-0 border-gray-400 text-black-1000 text-sm font-medium block py-2 px-4 bg-white
     }
-
+    
     .pagination-li:last-child{
+        @apply border-r border-r-gray-800
+    }
+
+    .pagination-li-light:last-child{
         @apply border-r border-r-gray-400
     }
+    
+/*------------------------------------------------------------ Navbar Styling ------------------------------------------------------------*/
 
     .nav{
         @apply bg-white w-full h-20 flex items-center shadow-sm top-0 right-0 left-0 fixed z-50
@@ -132,10 +146,12 @@
         @apply flex items-center justify-center w-6 h-6 rounded-full bg-blue-600 text-xs text-white font-medium absolute -top-2 -right-3
     }
 
+/*------------------------------------------------------------ Header Styling ------------------------------------------------------------*/
+
     .header{
         @apply -z-10 mt-20 w-full h-96 bg-[url('./assets/images/header3.jpg')] bg-no-repeat bg-cover relative 
     }
-    
+
     .header-cover{
         @apply absolute inset-0 w-full h-full bg-black-1000/40 
     }
@@ -143,6 +159,29 @@
     .header-heading{
         @apply text-white text-2xl capitalize font-medium
     }
+
+/*------------------------------------------------------------ Footer Styling ------------------------------------------------------------*/
+
+    .footer-container-top{
+        @apply px-14 py-16 bg-[#232323] flex flex-wrap justify-around items-baseline w-full
+    }
+
+    .footer-container-bottom{
+        @apply pb-10 flex flex-col bg-[#232323] justify-center items-center text-gray-300 text-base
+    }
+
+    .footer-item{
+        @apply flex flex-col justify-start  text-[#ffffff]
+    }
+
+    .footer-item-h3{
+        @apply text-xl font-semibold mb-3
+    }
+
+    .footer-item-span{
+        @apply my-1
+    }
+/*------------------------------------------------------------ Account-list Styling ------------------------------------------------------------*/
     
     .account-list{
         @apply flex items-center px-3 py-3.5 rounded-md
@@ -152,10 +191,12 @@
         @apply block ml-3 font-medium text-sm text-gray-700 capitalize
     }
 
-    .active{
+    .navlink-active{
         @apply bg-blue-50 
     }
-    
+
+/*------------------------------------------------------------ Product Details Headings Styling ------------------------------------------------------------*/
+
     .product-desc h1{
         @apply text-3xl capitalize
     }
@@ -167,70 +208,96 @@
     .product-desc h3{
         @apply text-xl capitalize
     }
+
+/*------------------------------------------------------------ Review Form Styling ------------------------------------------------------------*/
+
     .review-textarea{
         @apply outline-none border-[2px] border-zinc-300 p-2 rounded-md overflow-hidden h-10 transition-all duration-500 focus:border-blue-500/50 focus:border-[3px] focus:transition-all focus:h-32 focus:duration-500
     }
 }
 
 
-.font-brandTitle
-{
-    font-family: 'Righteous', cursive;
-}
+/*------------------------------------------------------------ Global Styling ------------------------------------------------------------*/
 
-.ql-toolbar.ql-snow{
-    @apply border-none bg-gray-900 text-gray-100  !important
-}
-
-.ql-toolbar .ql-stroke {
-    @apply stroke-gray-300 !important;
-}
-
-.ql-toolbar .ql-picker {
-    @apply text-gray-300 !important;
-}
-
-.ql-container.ql-snow{
-    @apply bg-gray-700 border-none  !important;
-}
-
-.quill > .ql-container > .ql-editor.ql-blank::before{
-    @apply text-gray-400 
-}
-
-.slide{
-    @apply relative
-}
-
-.slide-img{
-    @apply absolute inset-0
-}
-
-.category-slider{
-    @apply overflow-hidden rounded-lg relative flex justify-center items-center capitalize !important 
-}
-.category-swiper{
-    @apply w-full h-[150px] mb-20 !important 
-}
-.swiper {
-    width: 100%;
-    height: 70vh;
-  }
-  
-.swiper-slide {
-    text-align: center;
-    font-size: 18px;
-    background: #fff;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    html
+    {
+        scroll-behavior: smooth;
+    }
     
-}
+    .font-brandTitle
+    {
+        font-family: 'Righteous', cursive;
+    }
 
-.swiper-slide img {
-    display: block;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
+/*------------------------------------------------------------ User Navbar Items Styling ------------------------------------------------------------*/
+
+    .user-nav-item{
+        margin: 0 1.5rem;
+        position: relative;
+    }
+    .user-nav-item::after{
+        content:"";
+        display: block;
+        height: 4px;
+        width: 100%;
+        background-color: rgb(25, 31, 185);
+        transform: scaleX(0);
+        transform-origin: left;
+        transition: transform 0.3s ease;
+    }
+
+    .user-nav-item:hover::after {
+        transform: scaleX(1);
+    }
+    
+/*------------------------------------------------------------ React Quill Styling ------------------------------------------------------------*/
+
+    .ql-toolbar.ql-snow{
+        @apply border-none bg-gray-900 text-gray-100  !important
+    }
+
+    .ql-toolbar .ql-stroke {
+        @apply stroke-gray-300 !important;
+    }
+
+    .ql-toolbar .ql-picker {
+        @apply text-gray-300 !important;
+    }
+
+    .ql-container.ql-snow{
+        @apply bg-gray-700 border-none  !important;
+    }
+
+    .quill > .ql-container > .ql-editor.ql-blank::before{
+        @apply text-gray-400 
+    }
+
+
+/*------------------------------------------------------------ Swiper Slider Styling ------------------------------------------------------------*/
+
+    .slide{
+        @apply relative
+    }
+
+    .slide-img{
+        @apply absolute inset-0
+    }
+
+    .category-slider{
+        @apply overflow-hidden rounded-lg relative flex justify-center items-center capitalize !important 
+    }
+    .category-swiper{
+        @apply w-full h-[150px] mb-20 !important 
+    }
+    .swiper {
+        @apply w-[100%] h-[70vh]
+    }
+    
+    .swiper-slide {
+        @apply text-center text-lg bg-[#fff] flex justify-center items-center
+    }
+
+    .swiper-slide img {
+        @apply block w-[100%] h-[100%] object-cover
+    }
 

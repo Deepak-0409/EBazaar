@@ -15,13 +15,12 @@ const Pagination = ({path,page,perPage,count,theme}) =>
         startLoop=1;
     }
 
-    // 
     const links = () => {
         const allLinks = [];
         for(let i = startLoop; i<=endLoop; i++)
         {
             allLinks.push(
-                <li className="pagination-li" key={i}>
+                <li className={`${theme==='light' ? 'pagination-li-light' : 'pagination-li'}`} key={i}>
                     <Link className={`${theme==="light" ? 'pagination-link-light'  : 'pagination-link'} ${(page === i && theme==="light") && 'bg-black-950 text-white'}  ${(page === i && theme!=="light") && 'bg-gray-400 text-gray-900'}`} to = {`/${path}${i}`}>{i}</Link>
                 </li>
             )
@@ -31,13 +30,13 @@ const Pagination = ({path,page,perPage,count,theme}) =>
     const next = () =>{
         if(page<totalLinks)
         {
-            return <li className="pagination-li"><Link className={`${theme==='light' ? 'pagination-link-light' : 'pagination-link'}`} to ={`/${path}${page+1}`}><i className="fa-solid fa-chevron-right"></i></Link></li>
+            return <li className={`${theme==='light' ? 'pagination-li-light' : 'pagination-li'}`}><Link className={`${theme==='light' ? 'pagination-link-light' : 'pagination-link'}`} to ={`/${path}${page+1}`}><i className="fa-solid fa-chevron-right"></i></Link></li>
         }
     }
     const prev = () =>{
         if(page>1)
         {
-            return <li className="pagination-li"><Link className={`${theme==='light' ? 'pagination-link-light' : 'pagination-link'}`} to ={`/${path}${page-1}`}><i className="fa-solid fa-chevron-left"></i></Link></li>
+            return <li className={`${theme==='light' ? 'pagination-li-light' : 'pagination-li'}`}><Link className={`${theme==='light' ? 'pagination-link-light' : 'pagination-link'}`} to ={`/${path}${page-1}`}><i className="fa-solid fa-chevron-left"></i></Link></li>
         }
     }
     return count >perPage && (

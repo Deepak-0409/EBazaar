@@ -165,7 +165,7 @@ class PaymentController {
         const { id } = req.params;
         try {
             const session = await stripe.checkout.sessions.retrieve(id);
-            return res.status(200).json({message: "Your payment is successful", status: session.payment_status});
+            return res.status(200).json({message: "Payment is successful", status: session.payment_status});
         } catch (error) {
             return res.status(500).json(error.message);
         }

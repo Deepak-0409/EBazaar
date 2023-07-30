@@ -1,10 +1,11 @@
 const {validationResult} = require("express-validator")
 const CategoryModel = require("../models/Category")
+const { convert } = require('html-to-text')
 
 class Category {
     async create(req,res) {
         const errors = validationResult(req);
-        const {name} = req.body;
+        const name = convert(req.body.name);
         if(errors.isEmpty())
         {
             const exist = await CategoryModel.findOne({name});
@@ -64,9 +65,8 @@ class Category {
     async updateCategory(req,res)
     {
         const {id} = req.params;
-        const {name} = req.body;
+        const name = convert(req.body.name);
         const errors = validationResult(req);
-
         if(errors.isEmpty())
         {
             const exist = await CategoryModel.findOne({name});

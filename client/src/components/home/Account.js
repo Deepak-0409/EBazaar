@@ -8,11 +8,11 @@ const Account = () => {
     const dispatch = useDispatch();
     return (
         <>
-            <NavLink to="/user" className={({ isActive }) => (isActive ? 'active account-list' : 'account-list')} >
+            <NavLink to="/user" className={({ isActive }) => (isActive ? 'navlink-active account-list' : 'account-list')} >
                 <BsPersonCircle size={24}/>
                 <span className="account-list-title ">my account</span>
             </NavLink>
-            <NavLink to="/orders" className={({ isActive }) => (isActive ? 'active account-list' : 'account-list')}>
+            <NavLink to="/orders" className={({ isActive }) => (isActive ? 'navlink-active account-list' : 'account-list')}>
                 <BiCart size={26}/>
                 <span className="account-list-title ">orders</span>
             </NavLink>

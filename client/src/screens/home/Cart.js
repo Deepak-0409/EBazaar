@@ -15,8 +15,6 @@ const Cart = () => {
     const {userToken,user} = useSelector(state => state.authReducer);
     const [doPayment,response] = useSendPaymentMutation();
     
-    console.log(response);
-
     const navigate = useNavigate();
     const dispatch = useDispatch();
 

@@ -11,11 +11,12 @@ const UpdateCategory = () => {
     const [state, setState] = useState("");
     const {id} = useParams();
     const {data,isFetching} = useFetchCategoryQuery(id);
-    console.log("category data: ",data);
+    
     useEffect(() => {
         data?.category && setState(data?.category?.name)
         // eslint-disable-next-line
     }, [data?.category])
+
     const [saveCategory,response] = useUpdateCategoryMutation();
     const errors = response?.error?.data?.errors ? response?.error?.data?.errors : [];
     const updateSubmit = e =>{

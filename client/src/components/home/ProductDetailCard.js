@@ -38,6 +38,7 @@ const ProductDetailCard = ({product}) => {
         const cartItems = cart ? JSON.parse(cart) : [];
         const checkItem = cartItems.find(item => item._id===newProduct._id);
         if(!checkItem){
+            toast.success("Item added");
             dispatch(addCart(newProduct)); 
             cartItems.push(newProduct);;
             localStorage.setItem('cart',JSON.stringify(cartItems));
@@ -96,7 +97,7 @@ const ProductDetailCard = ({product}) => {
                         <Quantity quantity={quantity} inc={inc} dec={dec}/>
                     </div>
                     <div className="w-full sm:w-6/12 p-3 md:-mx-18 lg:-mx-20 xl:-mx-28">
-                        <button className="btn-primary" onClick={addToCart}>Add to cart</button>
+                        <button className="btn-primary shadow-lg active:translate-y-[2px]  active:shadow-none" onClick={addToCart}>Add to cart</button>
                     </div>
                 </div>
 

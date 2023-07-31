@@ -5,6 +5,7 @@ import Nav from "../../components/home/Nav"
 import { useGetProductQuery } from "../../store/services/productService";
 import ProductDetailCard from "../../components/home/ProductDetailCard";
 import ProductLoader from "../../components/home/ProductLoader";
+import Footer from "../../components/home/Footer";
 
 const Product = () => {
   const {id} = useParams();
@@ -12,7 +13,7 @@ const Product = () => {
   const navigate = useNavigate();
   return <>
         <Nav/>
-        <div className="my-container mt-24">
+        <div className="my-container m-24">
           {isFetching ? (
             <ProductLoader/>
           ) :(
@@ -38,6 +39,7 @@ const Product = () => {
           </>
           )}
         </div>
+       <Footer/> 
   </>
 }
 

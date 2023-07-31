@@ -18,7 +18,7 @@ class HomeProducts{
         }
         else
         {
-            const response = await ProductModel.find({...options}).where("stock").gt(0).limit(4).sort({updatedAt:-1});
+            const response = await ProductModel.find({...options}).where("stock").gt(0).limit(5).sort({updatedAt:-1});
             return res.status(200).json({products:response});            
         }
 

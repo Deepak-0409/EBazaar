@@ -101,7 +101,7 @@ class Category {
     {
         try {
             const categories = await CategoryModel.aggregate([
-                {$sample: {size: 3}}
+                {$sample: {size: 5}}
             ]);
 
             return res.status(200).json({categories});

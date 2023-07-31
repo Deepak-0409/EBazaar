@@ -22,13 +22,13 @@ class Product{
                 {
                     errors.push({msg:'Enter a valid input'})
                 }
-                if(parseInt(parsedData.discount)<0)
+                if(parseInt(parsedData.discount)<0 || parseInt(parsedData.discount)>=100)
                 {
                     errors.push({msg:'Enter a valid input'})
                 }
-                if(parseInt(parsedData.stock)<10)
+                if(parseInt(parsedData.stock)<0)
                 {
-                    errors.push({msg:'Min. value is 10'})
+                    errors.push({msg:'Enter a valid input'})
                 }
                 if(parsedData.category.trim().length===0)
                 {
@@ -56,7 +56,7 @@ class Product{
                 {
                     const mimeType = files[`image${i+1}`].mimetype;
                     const extension = mimeType.split('/')[1].toLowerCase();
-                    if(extension==='jpeg'||extension==='jpg'||extension==='png')
+                    if(extension==='jpeg'||extension==='jpg'||extension==='png' ||extension==='webp')
                     {
                         const imageName = uuidv4() + `.${extension}`;
                         const __dirname = path.resolve();

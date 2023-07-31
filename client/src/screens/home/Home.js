@@ -6,21 +6,24 @@ import HomeProduct from "../../components/home/HomeProduct";
 import Footer from "../../components/home/Footer";
 
 const Home = () => {
-    const {data,isFetching} = useRandomCategoriesQuery();
-
-    return(
+    const { data, isFetching } = useRandomCategoriesQuery();
+    console.log(data);
+    return (
         <>
             <Nav />
             <div className="">
-                <Slider/>
+                <Slider />
             </div>
-            <div className="my-container mt-10">
-                <Categories/>
-                {!isFetching && data?.categories?.length > 0 && data?.categories.map(category =>(
-                    <HomeProduct category={category} key={category._id}/>
+            <div className="my-container mt-10 mb-24">
+                <div className="mb-3">
+                    <span className="text-base text-[#0C1327] font-medium">Swipe left to view more categories</span>
+                </div>
+                <Categories />
+                {!isFetching && data?.categories?.length > 0 && data?.categories.map(category => (
+                    <HomeProduct category={category} key={category._id} />
                 ))}
             </div>
-            <Footer/>
+            <Footer />
         </>
     )
 }

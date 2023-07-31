@@ -29,9 +29,9 @@ const Footer = () => {
                 <div className="footer-item justify-center items-center">
                     <h3 className="footer-item-h3">Follow us</h3>
                     <div className="flex">
-                        <a href="https://www.instagram.com/?hl=en" target="_blank" rel="noopener noreferrer" className="mx-2 my-1"><AiOutlineInstagram size={28} className="hover:text-neutral-200" /></a>
-                        <a href="https://twitter.com/" target="_blank" rel="noopener noreferrer" className="mx-2 my-1"><AiOutlineTwitter size={28} className="hover:text-neutral-200" /></a>
-                        <a href="https://www.linkedin.com/" target="_blank" rel="noopener noreferrer" className="mx-2 my-1"><AiOutlineLinkedin size={28} className="hover:text-neutral-200" /></a>
+                        <a href="https://www.instagram.com/?hl=en" target="_blank" rel="noopener noreferrer" className="mx-2 my-1"><AiOutlineInstagram size={28} className="hover:text-neutral-200 hover:scale-105" /></a>
+                        <a href="https://twitter.com/" target="_blank" rel="noopener noreferrer" className="mx-2 my-1"><AiOutlineTwitter size={28} className="hover:text-neutral-200 hover:scale-105" /></a>
+                        <a href="https://www.linkedin.com/" target="_blank" rel="noopener noreferrer" className="mx-2 my-1"><AiOutlineLinkedin size={28} className="hover:text-neutral-200 hover:scale-105" /></a>
                     </div>
                 </div>
             </div>

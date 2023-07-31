@@ -15,6 +15,7 @@ const Slider = () => {
   ) : <Swiper pagination={{ dynamicBullets: true,}} modules={[Pagination]} className="mySwiper mt-20"> 
     {categories.length>0 && categories.map((cat,index)=>(
       <SwiperSlide className="slide" key={cat._id}>
+        <div></div>
           <div className="slide-img">
             <img src={`/images/slider/slider${index+1}.jpg`} alt="" />
           </div>

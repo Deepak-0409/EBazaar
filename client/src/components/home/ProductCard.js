@@ -7,7 +7,7 @@ const ProductCard = ({product}) => {
     const discountPrice = product.price-product.price*percentage;
 
   return (
-    <motion.div initial={{opacity:0}} animate={{opacity:1}} key={product._id} className="w-full sm:w-6/12 md:w-4/12 lg:w-3/12 xl:w-1/5 px-5 py-10" >
+    <motion.div initial={{opacity:0}} animate={{opacity:1}} key={product._id} className={`w-full sm:w-[calc(50%-6px)] md:w-[calc(33.333333%-6px)] lg:w-[calc(25%-6px)] xl:w-[calc(20%-6px)] px-5 py-5 mr-[6px] mt-5 border-[2px] rounded-md border-neutral-200/40 hover:scale-105 hover:shadow-md hover:transition-all duration-200`} >
         <Link to={`/product/${product._id}`}> 
             <div className="w-full">
                 <img src={`/images/${product.image1}`} alt="product image" className="w-full h-[300px] object-cover rounded-lg"/>  

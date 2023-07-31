@@ -4,7 +4,7 @@ const userOrderService  = createApi({
     reducerPath: 'user-orders',
     tagTypes: "orders",
     baseQuery: fetchBaseQuery({
-        baseUrl: 'http://localhost:3500/api/',
+        baseUrl: "https://perfect-dog-neckerchief.cyclic.app/api/",
         prepareHeaders: (headers,{getState}) => {
             const reducers = getState();
             const token = reducers?.authReducer?.userToken;

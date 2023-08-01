@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import Nav from "../../components/home/Nav";
 import Slider from "../../components/home/Slider";
 import Categories from "../../components/home/Categories";

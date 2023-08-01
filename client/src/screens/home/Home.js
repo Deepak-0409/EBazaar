@@ -7,7 +7,10 @@ import Footer from "../../components/home/Footer";
 
 const Home = () => {
     const { data, isFetching } = useRandomCategoriesQuery();
-    console.log(data);
+    //To scroll to top when component loads
+    useEffect(() => {
+        window.scrollTo(0, 0)
+    }, [])
     return (
         <>
             <Nav />
